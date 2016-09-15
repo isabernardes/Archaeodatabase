@@ -7,7 +7,7 @@ class Grabung(models.Model):
 	name = models.CharField(max_length=50)
 
 	def __unicode__(self):
-		return unicode(self.nummer) or u''
+		return unicode(self.name) or u''
 
 class Bearbeiter(models.Model):
 	vorname = models.CharField(max_length=50)
@@ -15,7 +15,6 @@ class Bearbeiter(models.Model):
 
 	def __unicode__(self):
 		return self.name
-
 
 class Befund(models.Model):
 	nummer = models.IntegerField(unique=True)
@@ -55,7 +54,20 @@ class Foto(models.Model):
 	def __unicode__(self):
 		return unicode(self.nummer) or u''
 
+class GrabBeschreibung(models.Model):
+	befund = models.OneToOneField(Befund, on_delete=models.CASCADE, null=True, blank=False)
+	beschreibung = models.TextField()
+	erhaltung = models.CharField(max_length=50)
+	bestattung = models.CharField(max_length=50)
+	lage = models.CharField(max_length=50)
+	schaedel = models.CharField(max_length=50)
+	armhaltung = models.CharField(max_length=50)
+	foto = models.ForeignKey(Foto, null=True)
+	bearbeiter = models.ForeignKey(Bearbeiter, null=True)
 
+
+def __unicode__(self):
+		return unicode(self.beschreibung) or u''
 
 
 

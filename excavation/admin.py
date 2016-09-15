@@ -4,6 +4,7 @@ from .models import Befund
 from .models import Profil
 from .models import Foto
 from .models import Bearbeiter
+from .models import GrabBeschreibung
 
 class GrabungModelAdmin(admin.ModelAdmin):
 	list_display = ["__unicode__", "nummer"]
@@ -44,3 +45,10 @@ class BearbeiterModelAdmin(admin.ModelAdmin):
 		model = Bearbeiter
 
 admin.site.register(Bearbeiter, BearbeiterModelAdmin)
+
+class GrabBeschreibungModelAdmin(admin.ModelAdmin):
+	list_display = ["beschreibung"]
+	class Meta:
+		model = GrabBeschreibung
+
+admin.site.register(GrabBeschreibung, GrabBeschreibungModelAdmin)
